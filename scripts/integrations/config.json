@@ -1,0 +1,16 @@
+{
+  "netskope_tenant": "",
+  "netskope_token": "",
+  "poll_interval": 300,
+  "log_level": "INFO",
+  "wazuh_manager_host": "wazuh-manager",
+  "wazuh_manager_port": 1514,
+  "max_events_per_request": 5000,
+  "api_timeout": 30,
+  "retry_attempts": 3,
+  "endpoints": {
+    "client_events": "/api/v2/events/dataexport/events/client",
+    "alert_events": "/api/v2/events/dataexport/events/alert",
+    "audit_events": "/api/v2/events/dataexport/events/audit"
+  }
+}

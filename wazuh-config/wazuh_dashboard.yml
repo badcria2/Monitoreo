@@ -1,0 +1,13 @@
+server.host: "0.0.0.0" 
+server.port: 5601 
+opensearch.hosts: ["https://wazuh.indexer:9200"] 
+opensearch.ssl.verificationMode: certificate 
+opensearch.ssl.certificateAuthorities: ["/usr/share/wazuh-dashboard/certs/root-ca.pem"] 
+opensearch.ssl.certificate: "/usr/share/wazuh-dashboard/certs/wazuh-dashboard.pem" 
+opensearch.ssl.key: "/usr/share/wazuh-dashboard/certs/wazuh-dashboard-key.pem" 
+opensearch.username: "admin" 
+opensearch.password: "SecretPassword" 
+wazuh_monitoring.enabled: true 
+wazuh_monitoring.frequency: 900 
+wazuh_monitoring.shards: 2 
+wazuh_monitoring.replicas: 0 

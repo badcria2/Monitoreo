@@ -1,0 +1,127 @@
+<!-- Netskope Integration Decoders -->
+
+<!-- Base Netskope JSON Decoder -->
+<decoder name="netskope-json">
+  <program_name>netskope</program_name>
+  <type>json</type>
+</decoder>
+
+<!-- Netskope Client Status Decoder -->
+<decoder name="netskope-client-status">
+  <parent>netskope-json</parent>
+  <use_own_name>true</use_own_name>
+  <regex offset="after_parent">^.*"event_type":"client_status"</regex>
+</decoder>
+
+<decoder name="netskope-client-status-fields">
+  <parent>netskope-client-status</parent>
+  <json_fields>
+    <field name="timestamp"/>
+    <field name="hostname"/>
+    <field name="user"/>
+    <field name="device_id"/>
+    <field name="client_version"/>
+    <field name="client_status"/>
+    <field name="tunnel_status"/>
+    <field name="installation_status"/>
+    <field name="upgrade_status"/>
+    <field name="client_action"/>
+    <field name="initiated_by"/>
+    <field name="policy_violation"/>
+    <field name="policy_name"/>
+    <field name="auth_status"/>
+    <field name="version_status"/>
+    <field name="last_seen"/>
+    <field name="ip_address"/>
+    <field name="mac_address"/>
+    <field name="os_version"/>
+    <field name="event_subtype"/>
+  </json_fields>
+</decoder>
+
+<!-- Netskope Client Events Decoder -->
+<decoder name="netskope-client-events">
+  <parent>netskope-json</parent>
+  <use_own_name>true</use_own_name>
+  <regex offset="after_parent">^.*"event_type":"client_event"</regex>
+</decoder>
+
+<decoder name="netskope-client-events-fields">
+  <parent>netskope-client-events</parent>
+  <json_fields>
+    <field name="timestamp"/>
+    <field name="hostname"/>
+    <field name="user"/>
+    <field name="device_id"/>
+    <field name="event_subtype"/>
+    <field name="client_version"/>
+    <field name="ip_address"/>
+    <field name="mac_address"/>
+    <field name="os_version"/>
+    <field name="location"/>
+  </json_fields>
+</decoder>
+
+<!-- Netskope Alerts Decoder -->
+<decoder name="netskope-alerts">
+  <parent>netskope-json</parent>
+  <use_own_name>true</use_own_name>
+  <regex offset="after_parent">^.*"event_type":"alert"</regex>
+</decoder>
+
+<decoder name="netskope-alerts-fields">
+  <parent>netskope-alerts</parent>
+  <json_fields>
+    <field name="timestamp"/>
+    <field name="alert_id"/>
+    <field name="alert_type"/>
+    <field name="alert_name"/>
+    <field name="severity"/>
+    <field name="user"/>
+    <field name="hostname"/>
+    <field name="device_id"/>
+    <field name="policy_name"/>
+    <field name="app_name"/>
+    <field name="activity"/>
+    <field name="category"/>
+    <field name="source_ip"/>
+    <field name="destination_ip"/>
+    <field name="url"/>
+    <field name="file_name"/>
+    <field name="file_size"/>
+    <field name="threat_name"/>
+    <field name="risk_level"/>
+  </json_fields>
+</decoder>
+
+<!-- Netskope Integration Logs Decoder -->
+<decoder name="netskope-integration">
+  <program_name>netskope-integration</program_name>
+</decoder>
+
+<decoder name="netskope-integration-json">
+  <parent>netskope-integration</parent>
+  <type>json</type>
+</decoder>
+
+<!-- Netskope Audit Events Decoder -->
+<decoder name="netskope-audit">
+  <parent>netskope-json</parent>
+  <use_own_name>true</use_own_name>
+  <regex offset="after_parent">^.*"event_type":"audit"</regex>
+</decoder>
+
+<decoder name="netskope-audit-fields">
+  <parent>netskope-audit</parent>
+  <json_fields>
+    <field name="timestamp"/>
+    <field name="admin_user"/>
+    <field name="action"/>
+    <field name="object_type"/>
+    <field name="object_name"/>
+    <field name="ip_address"/>
+    <field name="user_agent"/>
+    <field name="result"/>
+    <field name="details"/>
+  </json_fields>
+</decoder>

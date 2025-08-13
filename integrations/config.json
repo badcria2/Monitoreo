@@ -1,0 +1,28 @@
+{
+  "netskope": {
+    "api_token": "YOUR_NETSKOPE_TOKEN",
+    "tenant": "YOUR_TENANT.goskope.com",
+    "api_version": "v2",
+    "endpoints": {
+      "events": "/api/v2/events/dataexport/events/page",
+      "applications": "/api/v2/events/dataexport/events/application", 
+      "audit": "/api/v2/events/dataexport/events/audit",
+      "clients": "/api/v1/clients"
+    },
+    "polling_interval": 300,
+    "batch_size": 1000
+  },
+  "wazuh": {
+    "manager_host": "wazuh.manager",
+    "manager_port": 1514,
+    "indexer_host": "wazuh.indexer",
+    "indexer_port": 9200
+  },
+  "monitoring": {
+    "endpoint_check_interval": 600,
+    "alert_thresholds": {
+      "offline_minutes": 30,
+      "disconnected_minutes": 60
+    }
+  }
+}
