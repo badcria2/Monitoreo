@@ -39,7 +39,7 @@ class Config:
         
         # API endpoints
         self.api_base = f"https://{self.netskope_tenant}/api/v2"
-        self.client_events_endpoint = f"{self.api_base}/events/dataexport/events/endpoint"
+        self.client_events_endpoint = f"{self.api_base}/events/dataexport/events/client"
         self.alert_events_endpoint = f"{self.api_base}/events/dataexport/events/alert"
         self.audit_events_endpoint = f"{self.api_base}/events/dataexport/events/audit"
         

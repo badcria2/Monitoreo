@@ -1,0 +1,28 @@
+<!-- C:\netskope-wazuh\wazuh-config\custom-rules\netskope_rules.xml -->
+<group name="netskope,">
+
+  <!-- Regla Padre: Identifica todos los eventos de nuestro script -->
+  <rule id="100100" level="0">
+    <field name="program_name">netskope_monitor</field>
+    <description>Netskope integration event.</description>
+  </rule>
+
+  <!-- Regla para Cliente Desconectado -->
+  <rule id="100101" level="7">
+    <if_sid>100100</if_sid>
+    <!-- Asumimos que el tipo de evento es 'disconnect'. Podría variar. -->
+    <field name="type">disconnect</field>
+    <description>Netskope Info: Client on host $(hostname) for user $(user) has disconnected.</description>
+    <group>pci_dss_10.2.5,pci_dss_10.6.1,gdpr_IV_35.7.d,hipaa_164.312.b,nist_800_53_AU.14,tsc_CC7.2,tsc_CC7.3,</group>
+  </rule>
+
+  <!-- Regla para Cliente Desinstalado (¡Alerta de alta severidad!) -->
+  <rule id="100102" level="12">
+    <if_sid>100100</if_sid>
+    <!-- Asumimos que el tipo de evento es 'uninstall'. Podría variar. -->
+    <field name="type">uninstall</field>
+    <description>Netskope Security Alert: Client has been uninstalled on host $(hostname) for user $(user).</description>
+    <group>pci_dss_11.4,gdpr_IV_35.7.d,hipaa_164.312.b,nist_800_53_SI.4,tsc_CC7.1,</group>
+  </rule>
+
+</group>

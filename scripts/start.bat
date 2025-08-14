@@ -22,7 +22,7 @@ if %errorlevel% neq 0 (
     exit /b 1
 )
 
-findstr /R "NETSKOPE_TOKEN.*=" .env >nul 2>&1
+findstr /R "NETSKOPE_API_TOKEN.*=" .env >nul 2>&1
 if %errorlevel% neq 0 (
     echo ERROR: NETSKOPE_TOKEN no configurado en .env
     pause
