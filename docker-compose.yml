@@ -35,13 +35,13 @@ services:
       - WAZUH_API_USER=wazuh-api
       - WAZUH_API_PASSWORD=wazuh-api-password
       - FILEBEAT_SSL_VERIFICATION_MODE=none
-    # --- VOLVEMOS A LA ESTRATEGIA DE COPIADO ---
+      # --- ¡ESTA ES LA LÍNEA MÁGICA QUE FALTABA! ---
+      - WAZUH_INDEXER_SSL_VERIFY=false
     volumes:
       - wazuh-manager-data:/var/ossec/data
       - ./wazuh-config/:/config-to-copy:ro
-    # --- USAMOS EL 'COMMAND' CORRECTO ---
     command: >
-      sh -c "
+      bash -c "
         cp /config-to-copy/ossec.conf /var/ossec/etc/ossec.conf &&
         cp /config-to-copy/custom-rules/netskope_rules.xml /var/ossec/etc/rules/netskope_rules.xml &&
         exec /init
